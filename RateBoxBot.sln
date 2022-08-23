@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32516.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateBox.BotCodes", "RateBox.BotCodes\RateBox.BotCodes.csproj", "{07655808-0722-41AA-B9ED-6720F232B8FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateBox.Runner", "RateBox.Runner\RateBox.Runner.csproj", "{C96774CA-9A0C-4C4A-86E0-41119249E009}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07655808-0722-41AA-B9ED-6720F232B8FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07655808-0722-41AA-B9ED-6720F232B8FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07655808-0722-41AA-B9ED-6720F232B8FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07655808-0722-41AA-B9ED-6720F232B8FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C96774CA-9A0C-4C4A-86E0-41119249E009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C96774CA-9A0C-4C4A-86E0-41119249E009}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C96774CA-9A0C-4C4A-86E0-41119249E009}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C96774CA-9A0C-4C4A-86E0-41119249E009}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {793D6121-770D-4AB2-A01A-D9C16CAD8177}
+	EndGlobalSection
+EndGlobal
