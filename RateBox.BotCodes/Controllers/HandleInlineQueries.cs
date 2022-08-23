@@ -13,43 +13,48 @@ namespace RateBox.Bot.Controllers
     {
         public async Task CheckText(ITelegramBotClient bot, InlineQuery query)
         {
-            if (query.Query.Trim() != "" && query.Query.Length >= 4)
+            if (query.Query.Trim() != "")
             {
-                var list = new List<InlineQueryResult>();
+                var list = new List<InlineQueryResultArticle>();
                 foreach (var item in await ApiHandler.OmdbHandler.SearchByName(query.Query))
                 {
                     var text = $"- Title: {item.Title}" +
-                        $"\n- Year: {item.Year}";
+                               $"\n- Year: {item.Year}";
 
                     var iqrp = new InlineQueryResultArticle(
                         id: "title-" + item.Id,
                         title: $"{item.Title}",
                         inputMessageContent: new InputTextMessageContent(text)
-                       )
+                    )
                     {
                         Description = $"Year: {item.Year}",
                         ThumbUrl = item.Poster,
-                        //ThumbHeight = 300,
-                        //ThumbWidth = 120,
+                        ThumbHeight = 400,
+                        ThumbWidth = 80,
                         ReplyMarkup = new InlineKeyboardMarkup(new[]
                         {
-                        new[]
-                        {
-                            InlineKeyboardButton.WithUrl("🔗 Rate Box Channel", "https://t.me/RateBox")
-                        }
-                    })
+                            new[]
+                            {
+                                InlineKeyboardButton.WithUrl("🔗 Rate Box Channel", "https://t.me/RateBox")
+                            }
+                        })
                     };
                     list.Add(iqrp);
                 }
-                var results = list.Take(10).ToArray();
 
                 try
                 {
+                    foreach (var item in list.FindAll(x => !x.ThumbUrl.StartsWith("http")))
+                    {
+                        list.Find(x => x.Id == item.Id).ThumbUrl = "https://s6.uupload.ir/files/1-40-512_jtkg.png";
+                    }
+
+                    var results = list.Take(10).ToArray();
                     await bot.AnswerInlineQueryAsync(inlineQueryId: query.Id, results: results, cacheTime: 0);
                 }
                 catch (Exception ex)
                 {
-                    // await bot.AnswerInlineQueryAsync(query.Id, new InlineQueryResultArticle("nothingtoshow", ))
+                    // Nothing to Do !
                 }
             }
         }
