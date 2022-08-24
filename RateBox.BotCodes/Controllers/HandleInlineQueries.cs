@@ -60,15 +60,15 @@ namespace RateBox.Bot.Controllers
             }
             else
             {
-                var text = $"ℹ️ Type movie/series Title after @RateBoxBot to search !";
+                var text = $"ℹ️ Type movie/series Title after @RateBoxBot to search !" +
+                           $"\n- *Or* tap \"Search\" Button and type title of Movie/Serie.";
                 var result = new InlineQueryResultArticle(
                     id: "howtosearch",
                     title: "How to use Bot?",
                     inputMessageContent: new InputTextMessageContent(text)
                     )
                 {
-                    Description = "Type movie/series Title to search on IMDb Database !" +
-                                  "\n- *Or* tap \"Search\" Button and type title of Movie/Serie.",
+                    Description = "Type movie/series Title to search on IMDb Database !",
                     ThumbUrl = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/325/magnifying-glass-tilted-right_1f50e.png",
                     ReplyMarkup = new InlineKeyboardMarkup(new[]
                     {
