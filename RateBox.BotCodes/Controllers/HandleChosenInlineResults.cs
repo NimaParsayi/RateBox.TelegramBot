@@ -14,7 +14,7 @@ namespace RateBox.Bot.Controllers
             var movie = await ApiHandler.OmdbHandler.GetMovieDetails(movieId);
             var tuple = EnglishTextGenrators.MovieDetails(movie);
 
-            await bot.EditMessageTextAsync(message.InlineMessageId, tuple.Item1, ParseMode.Markdown, replyMarkup: tuple.Item2);
+            await bot.EditMessageTextAsync(message.InlineMessageId, tuple.Item1, ParseMode.Html, replyMarkup: tuple.Item2);
         }
     }
 }

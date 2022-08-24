@@ -15,7 +15,7 @@ namespace RateBox.Bot
         private static ITelegramBotClient bot;
         public static async Task Run()
         {
-            bot = new TelegramBotClient("5214599261:AAE-MT7u_NqZk4sF4OrdGFGC0Op5aM1PW38");
+            bot = new TelegramBotClient("1226468775:AAEcxd1AKh_gxrIocIz46L-igWSdATNgYBI");
             using var cts = new CancellationTokenSource();
             var cancellationToken = cts.Token;
 

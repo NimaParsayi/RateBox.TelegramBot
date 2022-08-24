@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -56,6 +57,28 @@ namespace RateBox.Bot.Controllers
                 {
                     // Nothing to Do !
                 }
+            }
+            else
+            {
+                var text = $"ℹ️ Type movie/series Title after @RateBoxBot to search !";
+                var result = new InlineQueryResultArticle(
+                    id: "howtosearch",
+                    title: "How to use Bot?",
+                    inputMessageContent: new InputTextMessageContent(text)
+                    )
+                {
+                    Description = "Type movie/series Title to search on IMDb Database !",
+                    ThumbUrl = "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/72/apple/325/magnifying-glass-tilted-right_1f50e.png",
+                    ReplyMarkup = new InlineKeyboardMarkup(new[]
+                    {
+                        new[]
+                        {
+                            InlineKeyboardButton.WithUrl("🔗 Rate Box Channel", "https://t.me/RateBox")
+                        }
+                    })
+
+                };
+                await bot.AnswerInlineQueryAsync(inlineQueryId: query.Id, results: new List<InlineQueryResult>(){result}, cacheTime: 0);
             }
         }
     }
