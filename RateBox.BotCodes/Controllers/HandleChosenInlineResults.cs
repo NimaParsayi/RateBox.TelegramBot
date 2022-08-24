@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using RateBox.Bot.ApiHandler;
 using RateBox.Bot.TextGenerators;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -10,11 +11,14 @@ namespace RateBox.Bot.Controllers
     {
         public async Task CheckMessage(ITelegramBotClient bot, ChosenInlineResult message)
         {
-            var movieId = message.ResultId.Replace("title-", null);
-            var movie = await ApiHandler.OmdbHandler.GetMovieDetails(movieId);
-            var tuple = EnglishTextGenrators.MovieDetails(movie);
+            if (message.ResultId != "howtosearch")
+            {
+                var movieId = message.ResultId.Replace("title-", null);
+                var movie = await OmdbHandler.GetMovieDetails(movieId);
+                var tuple = EnglishTextGenrators.MovieDetails(movie);
 
-            await bot.EditMessageTextAsync(message.InlineMessageId, tuple.Item1, ParseMode.Html, replyMarkup: tuple.Item2);
+                await bot.EditMessageTextAsync(message.InlineMessageId, tuple.Item1, ParseMode.Html, replyMarkup: tuple.Item2);
+            }
         }
     }
 }
